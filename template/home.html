@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Home Page</h1>
+    
+    {% if request.user.is_authenticated %}
+    
+    <h2 align="center"><a href="logout">Logout</a></h2>
+
+        {% if request.user.is_superuser %}
+
+        <h2 align="center"><a href="create_product">Add Product</a></h2>
+        <h2 align="center"><a href="read_products">Show Product</a></h2>
+        <h2 align="center"><a href="read_cart">Cart</a></h2>
+        <h2 align="center"><a href="read_orders">Previous Orders</a></h2>
+
+        {% elif request.user.is_staff %}
+
+        <h2 align="center"><a href="create_product">Add Product</a></h2>
+        <h2 align="center"><a href="read_products">Show Product</a></h2>
+
+        {% else %}
+
+        <h2 align="center"><a href="read_products">Show Product</a></h2>
+        <h2 align="center"><a href="read_cart">Cart</a></h2>
+        <h2 align="center"><a href="read_orders">Previous Orders</a></h2>
+
+        {% endif %}
+
+    {% else %}
+
+    <h2 align="center"><a href="register">Register</a></h2>
+    <h2 align="center"><a href="login">Login</a></h2>
+    
+    {% endif %}
+
+    
+
+</body>
+</html>
